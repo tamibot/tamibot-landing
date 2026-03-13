@@ -1,0 +1,8 @@
+{
+  "name": "TamiBot - Agente de IA Inmobiliario",
+  "description": "Una landing page de alta conversión para TamiBot, el primer asesor de IA que atiende clientes, califica leads y agenda visitas para el sector inmobiliario.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}

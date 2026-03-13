@@ -1,0 +1,330 @@
+
+import React, { useState, useEffect, useRef } from 'react';
+import { Smartphone, Send, Signal, Wifi, Battery, ChevronLeft, MoreHorizontal, ChevronRight } from 'lucide-react';
+
+const HowItWorks: React.FC = () => {
+    const [activeTab, setActiveTab] = useState('filtra');
+    const containerRef = useRef<HTMLDivElement>(null);
+
+    // IPhone Frame (Ultra Premium - duplicated from ContentShowcase)
+    const IPhoneFrame: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+        <div className="bg-black rounded-[2.5rem] md:rounded-[3rem] p-2.5 w-full max-w-[280px] h-[560px] shadow-[0_40px_80px_-15px_rgba(0,0,0,0.5)] mx-auto border-[5px] border-gray-900 relative ring-1 ring-white/10 flex-shrink-0 transition-all duration-500 scale-[0.65] md:scale-90 lg:scale-100">
+            {/* Action Button */}
+            <div className="absolute top-24 -left-[2px] h-8 w-[3px] bg-gray-700 rounded-l-md"></div>
+            {/* Volume Buttons */}
+            <div className="absolute top-36 -left-[2px] h-12 w-[3px] bg-gray-700 rounded-l-md"></div>
+            <div className="absolute top-52 -left-[2px] h-12 w-[3px] bg-gray-700 rounded-l-md"></div>
+            {/* Power Button */}
+            <div className="absolute top-40 -right-[2px] h-16 w-[3px] bg-gray-700 rounded-r-md"></div>
+
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 h-7 w-32 bg-black rounded-b-2xl z-20">
+                {/* Dynamic Island Elements */}
+                <div className="absolute top-[6px] right-5 w-2 h-2 bg-gray-800 rounded-full"></div>
+            </div>
+
+            <div className="bg-white w-full h-full rounded-[2.5rem] overflow-hidden relative font-sans text-gray-900 flex flex-col">
+                {children}
+
+                {/* Home Indicator */}
+                <div className="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-32 h-1 bg-black rounded-full opacity-20 z-50"></div>
+            </div>
+        </div>
+    );
+
+    const steps = [
+        {
+            id: 'filtra',
+            icon: "🔍",
+            title: "1. Filtra",
+            desc: "Tami califica a tus leads con preguntas profundas. Identifica presupuesto, zona de interés y método de pago.",
+            detail: "Realiza un perfilado automático. Si el lead no cuenta con presupuesto o historial para un crédito, Tami lo categoriza para proteger tu tiempo.",
+            chat: [
+                { type: 'bot', text: "¡Hola! 👋 Veo que te interesa el Proyecto en Miraflores. ¿Buscas para inversión o para vivir? 🏢" },
+                { type: 'user', text: "Para vivir, busco de 2 habitaciones.", time: "10:42 AM" },
+                { type: 'bot', text: "Perfecto. ✅ ¿Y cuentas con un crédito hipotecario pre-aprobado o comprarás al contado? 💳", time: "10:42 AM" },
+                { type: 'user', text: "Tengo un crédito pre-aprobado.", time: "10:43 AM" },
+                { type: 'bot', text: "Excelente perfil. 🌟 Última pregunta: ¿Cuál es tu presupuesto aproximado?", time: "10:43 AM" },
+                { type: 'user', text: "Alrededor de $120,000 USD.", time: "10:44 AM" },
+                { type: 'bot', text: "Genial, tenemos opciones ideales. Te paso con un asesor para programar tu visita. 👇", time: "10:44 AM" }
+            ]
+        },
+        {
+            id: 'educa',
+            icon: "💰",
+            title: "2. Vende",
+            desc: "Responde dudas al instante. Envía fotos, brochures, información de amenidades y maneja objeciones.",
+            detail: "No solo responde, sino que persuade. Envía recorridos virtuales, detalles de distribución y amenidades para aumentar el deseo de compra.",
+            chat: [
+                { type: 'user', text: "¿Qué precio tiene el depa de 2 habs?", time: "11:15 AM" },
+                { type: 'bot', text: "Los precios de 2 habitaciones inician en $115,000 USD. Si separas esta semana te regalamos la **cochera**. 🎁", time: "11:15 AM" },
+                { type: 'user', text: "¿Me puedes enviar el brochure completo?", time: "11:16 AM" },
+                { type: 'file', text: "Brochure_Miraflores.pdf", size: "4.2 MB", pages: "12 páginas", time: "11:16 AM" },
+                { type: 'bot', text: "Aquí tienes. Revisa la página 6, ahí detallamos los planos e incluye vista al parque.", time: "11:16 AM" },
+                { type: 'user', text: "¿Tienen áreas comunes?", time: "11:17 AM" },
+                { type: 'bot', text: "Sí, cuenta con piscina, gimnasio equipado, zona de parrilla y un elegante lobby. 🏊‍♂️", time: "11:17 AM" }
+            ]
+        },
+        {
+            id: 'persigue',
+            icon: "🏃",
+            title: "3. Seguimiento Automático",
+            desc: "Tami no se cansa. Si alguien no compra o reserva, le hace seguimiento por días con una secuencia estratégica.",
+            detail: "Recupera leads inactivos. Tami detecta si el lead dejó de responder y activa disparadores psicológicos de urgencia sobre las últimas unidades.",
+            chat: [
+                { type: 'system', text: "📅 Día 1 (24h después)" },
+                { type: 'bot', text: "Hola Carlos, vi que descargaste el brochure pero no pudimos agendar tu visita. 👀", time: "09:30 AM" },
+                { type: 'bot', text: "¿Te quedó alguna duda sobre la ubicación o el pago inicial?", time: "09:30 AM" },
+                { type: 'system', text: "📅 Día 2" },
+                { type: 'bot', text: "Carlos, solo quería recordarte que el bono de cochera gratis expira este viernes. ⏳", time: "11:00 AM" },
+                { type: 'system', text: "📅 Día 3 (Cierre)" },
+                { type: 'bot', text: "¿Te ayuda si te enviamos una tabla de amortización con cuotas súper accesibles? 👇", time: "16:00 PM" },
+                { type: 'link', text: "Tamibot.com/simulador/miraflores", time: "16:00 PM" }
+            ]
+        },
+        {
+            id: 'cierra',
+            icon: "🤝",
+            title: "4. Deriva con Asesor",
+            desc: "Tami prepara al prospecto caliente y lo transfiere o agenda una visita formal cuando está listo.",
+            detail: "Tú decides el objetivo: Agendar una visita física o derivar por WhatsApp al vendedor correspondiente. Tami lo ejecuta en segundos.",
+            chat: [
+                { type: 'user', text: "Listo, quiero agendar una visita presencial para este sábado.", time: "10:00 AM" },
+                { type: 'bot', text: "¡Confirmado! 🎉 Quedas registrado para este sábado.", time: "10:00 AM" },
+                { type: 'bot', text: "Un asesor de ventas te escribirá en breve para coordinar la hora exacta.", time: "10:00 AM" },
+                { type: 'system', text: "🔄 Chat transferido a Andrea Paz (Asesora Principal)" },
+                { type: 'advisor', text: "Hola Carlos, soy Andrea. ¿Te parece bien a las 11:00 AM en el proyecto? 👨‍💻", time: "10:05 AM" },
+                { type: 'user', text: "Perfecto, nos vemos allá.", time: "10:06 AM" },
+                { type: 'advisor', text: "Genial, te envío la ubicación por aquí... 📍", time: "10:06 AM" }
+            ]
+        }
+    ];
+
+    // Sticky Scroll Logic
+    useEffect(() => {
+        const handleScroll = () => {
+            if (!containerRef.current) return;
+
+            const rect = containerRef.current.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            const visibleHeight = windowHeight * 0.9;
+            const containerHeight = containerRef.current.offsetHeight - visibleHeight;
+
+            let progress = (-rect.top + 20) / containerHeight;
+            progress = Math.max(0, Math.min(1, progress));
+
+            const stepIndex = Math.min(steps.length - 1, Math.floor(progress * steps.length));
+            setActiveTab(steps[stepIndex].id);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        handleScroll();
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    const handleStepClick = (index: number) => {
+        if (!containerRef.current) return;
+
+        const rect = containerRef.current.getBoundingClientRect();
+        const absoluteContainerTop = window.scrollY + rect.top;
+        const windowHeight = window.innerHeight;
+        const containerPaddingTop = 48; // Adjust based on pt-12 in container
+
+        // Calculate the position for each step within the 150vh container
+        // steps.length - 1 because we want the last step to be at the bottom of the scrollable area
+        const containerScrollHeight = containerRef.current.offsetHeight - windowHeight;
+        const stepScrollPosition = (index / (steps.length - 1)) * containerScrollHeight;
+
+        window.scrollTo({
+            top: absoluteContainerTop + stepScrollPosition,
+            behavior: 'smooth'
+        });
+    };
+
+    const ChatScreen = ({ chat }: { chat: any[] }) => (
+        <div className="bg-[#E5DDD5] h-full flex flex-col font-sans relative overflow-hidden">
+            {/* Status Bar */}
+            <div className="h-11 flex items-center justify-between px-6 pt-2 select-none shrink-0 z-30 bg-[#075E54]">
+                <div className="text-[15px] font-semibold w-10 text-center tracking-tight text-white">9:41</div>
+                <div className="flex gap-1.5 opacity-90">
+                    <Signal size={16} fill="white" stroke="white" />
+                    <Wifi size={16} stroke="white" />
+                    <Battery size={20} fill="white" stroke="white" />
+                </div>
+            </div>
+
+            {/* Whatsapp Header */}
+            <div className="bg-[#075E54] h-14 p-3 flex items-center justify-between shadow-md shrink-0 z-20 relative">
+                <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center text-xl border border-white/20 overflow-hidden relative">
+                        <div className="absolute inset-0 bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center text-white font-bold">L</div>
+                    </div>
+                    <div className="text-white">
+                        <div className="font-bold text-sm leading-none">Tami Agente</div>
+                        <div className="text-[10px] opacity-80 mt-0.5">En línea</div>
+                    </div>
+                </div>
+                <div className="flex gap-4 text-white opacity-90 mr-2">
+                    <Signal size={18} className="rotate-90" />
+                    <MoreHorizontal size={20} />
+                </div>
+            </div>
+
+            {/* Chat Body */}
+            <div className="flex-1 overflow-y-auto p-3 space-y-3 pt-4 bg-opacity-10 bg-[url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d936a207d7.png')] bg-repeat scroll-smooth no-scrollbar">
+
+                <div className="flex justify-center my-2">
+                    <div className="bg-[#E1F3FB] text-gray-600 text-[9px] font-bold px-2 py-0.5 rounded shadow-sm">
+                        HOY
+                    </div>
+                </div>
+
+                {chat.map((msg, i) => (
+                    <div key={i} className="flex flex-col animate-fade-in-up" style={{ animationDelay: `${i * 0.1}s` }}>
+                        {/* SYSTEM MSG */}
+                        {msg.type === 'system' && (
+                            <div className="flex justify-center my-2">
+                                <div className="bg-[#FFF5C4] text-gray-600 text-[9px] font-bold px-2 py-0.5 rounded-lg uppercase tracking-wide shadow-sm text-center max-w-[80%]">
+                                    {msg.text}
+                                </div>
+                            </div>
+                        )}
+
+                        {/* BOT & ADVISOR MSG */}
+                        {(msg.type === 'bot' || msg.type === 'advisor') && (
+                            <div className={`self-start max-w-[90%] ${msg.type === 'advisor' ? 'bg-[#FFF3CD]' : 'bg-white'} p-2 px-2.5 rounded-lg shadow-[0_1px_0.5px_rgba(0,0,0,0.13)] text-[11px] leading-snug relative rounded-tl-none mb-1`}>
+                                {msg.type === 'advisor' && <div className="text-[9px] text-teal-600 font-bold mb-1">~ Javier Gomez</div>}
+                                <div dangerouslySetInnerHTML={{ __html: msg.text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') }} />
+                                <div className="text-[9px] text-gray-400 mt-0.5 flex justify-end gap-1 min-w-[30px]">{msg.time}</div>
+                                <div className="absolute top-0 -left-2 w-0 h-0 border-[8px] border-transparent border-t-white border-r-white transform rotate-0 z-0 drop-shadow-sm"></div>
+                            </div>
+                        )}
+
+                        {/* USER MSG */}
+                        {msg.type === 'user' && (
+                            <div className="self-end ml-auto max-w-[90%] bg-[#DCF8C6] p-2 px-2.5 rounded-lg shadow-[0_1px_0.5px_rgba(0,0,0,0.13)] text-[11px] leading-snug relative rounded-tr-none mb-1">
+                                {msg.text}
+                                <div className="text-[9px] text-teal-800 mt-0.5 flex justify-end gap-1 opacity-60 min-w-[40px]">{msg.time} <span className="text-purple-500 font-bold">✓✓</span></div>
+                                <div className="absolute top-0 -right-2 w-0 h-0 border-[8px] border-transparent border-t-[#DCF8C6] border-l-[#DCF8C6] transform rotate-0 z-0"></div>
+                            </div>
+                        )}
+
+                        {/* FILE MSG */}
+                        {msg.type === 'file' && (
+                            <div className="self-start max-w-[85%] bg-white p-1 rounded-lg shadow-[0_1px_0.5px_rgba(0,0,0,0.13)] rounded-tl-none mb-1">
+                                <div className="bg-gray-100 p-2 rounded-md flex items-center gap-2 mb-1 propiedadr-pointer hover:bg-gray-200 transition-colors">
+                                    <div className="w-6 h-8 bg-red-500 rounded flex items-center justify-center text-white text-[7px] font-bold">PDF</div>
+                                    <div className="overflow-hidden">
+                                        <div className="text-[10px] font-medium text-gray-800 truncate">{msg.text}</div>
+                                        <div className="text-[8px] text-gray-500">{msg.pages} • {msg.size}</div>
+                                    </div>
+                                </div>
+                                <div className="text-[9px] text-gray-400 px-1 pb-0.5 flex justify-end gap-1">{msg.time}</div>
+                            </div>
+                        )}
+
+                        {/* LINK MSG */}
+                        {msg.type === 'link' && (
+                            <div className="self-start max-w-[85%] bg-white p-2 rounded-lg shadow-[0_1px_0.5px_rgba(0,0,0,0.13)] rounded-tl-none mb-1 propiedadr-pointer hover:bg-gray-50">
+                                <div className="text-purple-500 font-bold underline text-xs">{msg.text}</div>
+                            </div>
+                        )}
+                    </div>
+                ))}
+            </div>
+
+            {/* Footer Input */}
+            <div className="bg-[#F0F0F0] p-2 flex items-center gap-2 shrink-0 pb-4">
+                <div className="bg-white h-8 flex-1 rounded-full px-3 flex items-center text-gray-400 text-xs shadow-sm border border-gray-200">
+                    Escribe un mensaje...
+                </div>
+                <div className="w-8 h-8 bg-[#075E54] rounded-full flex items-center justify-center text-white shadow-md">
+                    <Send size={14} />
+                </div>
+            </div>
+        </div>
+    );
+
+    return (
+        <div className="bg-white relative" id="how-it-works">
+            {/* Title Section (Outside Sticky) */}
+            <div className="container mx-auto px-6 md:px-12 max-w-5xl mb-12 pt-12">
+                <div className="text-center animate-fade-up">
+                    <div className="inline-flex items-center gap-2 bg-purple-50 text-purple-600 px-3 py-1 rounded-full text-xs font-bold uppercase mb-4 border border-purple-100">
+                        <Smartphone size={14} /> El Motor de Ventas
+                    </div>
+                    <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-4 tracking-tight">
+                        Cómo Funciona.
+                    </h2>
+                    <p className="text-base md:text-lg text-gray-500 max-w-2xl mx-auto">
+                        Automatiza el 90% del proceso comercial. Tus asesores solo hablan con quienes ya quieren comprar.
+                    </p>
+                </div>
+            </div>
+
+            {/* Sticky Container Area */}
+            <div ref={containerRef} className="relative h-auto md:h-[150vh] pb-24 md:pb-12 overflow-x-hidden md:overflow-visible">
+
+                <div className="relative h-auto md:sticky md:top-0 md:h-screen flex flex-col justify-center overflow-visible md:overflow-hidden">
+                    <div className="container mx-auto px-4 md:px-6 max-w-5xl relative z-10">
+
+                        <div className="flex flex-col-reverse lg:flex-row gap-4 lg:gap-16 items-center h-full">
+
+                            {/* Left: Step List */}
+                            <div className="w-full lg:w-1/2 space-y-3 pt-4 lg:pt-0">
+                                {steps.map((step, i) => {
+                                    const isActive = activeTab === step.id;
+                                    return (
+                                        <div
+                                            key={step.id}
+                                            onClick={() => handleStepClick(i)}
+                                            className={`p-4 rounded-xl propiedadr-pointer border transition-all duration-300 group ${isActive
+                                                ? 'bg-white border-purple-200 shadow-lg shadow-purple-900/5 ring-1 ring-purple-50 scale-[1.02] relative z-20'
+                                                : 'bg-transparent border-transparent hover:bg-white hover:border-gray-100 hover:shadow-sm opacity-60 hover:opacity-100'}`}
+                                        >
+                                            <h3 className={`text-lg font-bold mb-1.5 flex items-center gap-3 ${isActive ? 'text-gray-900' : 'text-gray-400'}`}>
+                                                <span className={`text-xl transition-transform duration-300 ${isActive ? 'scale-110' : 'grayscale opacity-70'}`}>
+                                                    {step.icon}
+                                                </span>
+                                                {step.title}
+                                            </h3>
+                                            <p className={`text-xs md:text-sm leading-relaxed transition-colors pl-[40px] ${isActive ? 'text-gray-600' : 'text-gray-400'}`}>
+                                                {step.desc}
+                                            </p>
+
+                                            <div className={`overflow-hidden transition-all duration-300 pl-[40px] ${isActive ? 'max-h-24 opacity-100 mt-2' : 'max-h-0 opacity-0'}`}>
+                                                <p className="text-[11px] bg-purple-50 text-purple-700 p-2 rounded-lg border border-purple-100 font-medium leading-relaxed">
+                                                    ✨ {step.detail}
+                                                </p>
+                                            </div>
+
+                                            {isActive && (
+                                                <div className="ml-[40px] mt-2 flex items-center text-purple-600 text-[11px] font-bold uppercase tracking-wide animate-fade-in group-hover:underline">
+                                                    Ver Detalles <ChevronRight size={12} className="ml-1" />
+                                                </div>
+                                            )}
+                                        </div>
+                                    );
+                                })}
+                            </div>
+
+                            {/* Right: Sticky Mockup */}
+                            <div className="w-full lg:w-1/2 flex justify-center sticky top-0 md:top-24 lg:top-0 h-full items-center">
+                                {/* Bg Glow */}
+                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-purple-100/40 rounded-full blur-[100px] -z-10"></div>
+
+                                {/* Render Active Mockup */}
+                                <div className="transition-all duration-500 transform animate-fade-in-up">
+                                    <IPhoneFrame>
+                                        <ChatScreen chat={steps.find(s => s.id === activeTab)?.chat || []} />
+                                    </IPhoneFrame>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default HowItWorks;
