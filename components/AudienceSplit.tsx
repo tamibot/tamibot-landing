@@ -50,7 +50,7 @@ const AudienceSplit: React.FC = () => {
                                 </li>
                             </ul>
 
-                            <button onClick={() => window.open('https://wa.me/51995547575?text=Hola%20quisiera%20mas%20informaci%C3%B3n%20para%20mi%20desarrolladora', '_blank')} className="w-full bg-purple-600 text-white px-6 py-4 rounded-full font-bold text-lg hover:bg-purple-700 transition-colors flex items-center justify-center gap-2 mt-auto">
+                            <button onClick={() => window.open('https://wa.me/51995547575?text=Hola%20quiero%20mas%20informacion%20de%20TamiBot', '_blank')} className="w-full bg-purple-600 text-white px-6 py-4 rounded-full font-bold text-lg hover:bg-purple-700 transition-colors flex items-center justify-center gap-2 mt-auto">
                                 Ver Solución para Proyectos <ArrowRight size={20} />
                             </button>
                         </div>
@@ -88,7 +88,7 @@ const AudienceSplit: React.FC = () => {
                                 </li>
                             </ul>
 
-                            <button onClick={() => window.open('https://wa.me/51995547575?text=Hola%20quisiera%20mas%20informaci%C3%B3n%20para%20mi%20agencia', '_blank')} className="w-full bg-teal-500 text-white px-6 py-4 rounded-full font-bold text-lg hover:bg-teal-600 transition-colors flex items-center justify-center gap-2 mt-auto">
+                            <button onClick={() => window.open('https://wa.me/51995547575?text=Hola%20quiero%20mas%20informacion%20de%20TamiBot', '_blank')} className="w-full bg-teal-500 text-white px-6 py-4 rounded-full font-bold text-lg hover:bg-teal-600 transition-colors flex items-center justify-center gap-2 mt-auto">
                                 Ver Solución para Agentes <ArrowRight size={20} />
                             </button>
                         </div>

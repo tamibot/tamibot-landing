@@ -3,7 +3,7 @@ import React from 'react';
 const WhatsAppButton: React.FC = () => {
     return (
         <button
-            onClick={() => window.open('https://wa.me/51995547575?text=Hola%20quisiera%20mas%20informaci%C3%B3n%20de%20Tami%20Bot', '_blank')}
+            onClick={() => window.open('https://wa.me/51995547575?text=Hola%20quiero%20mas%20informacion%20de%20TamiBot', '_blank')}
             className="fixed bottom-6 right-6 z-50 group flex items-center justify-center w-14 h-14 bg-[#25D366] rounded-full shadow-[0_4px_14px_rgba(37,211,102,0.4)] hover:shadow-[0_6px_20px_rgba(37,211,102,0.6)] hover:scale-110 transition-all duration-300 animate-fade-in"
             aria-label="Chat on WhatsApp"
         >

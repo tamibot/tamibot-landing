@@ -99,7 +99,7 @@ const Navbar: React.FC = () => {
               Prueba Gratuita <ArrowRight size={20} />
             </button>
             <p className="text-center text-gray-400 text-sm font-medium">
-              ¿Tienes dudas? <span onClick={() => window.open('https://wa.me/51995547575?text=Hola%20quisiera%20mas%20informaci%C3%B3n%20de%20Tami%20Bot', '_blank')} className="text-purple-600 font-bold propiedadr-pointer hover:underline">Hablemos por WhatsApp</span>
+              ¿Tienes dudas? <span onClick={() => window.open('https://wa.me/51995547575?text=Hola%20quiero%20mas%20informacion%20de%20TamiBot', '_blank')} className="text-purple-600 font-bold propiedadr-pointer hover:underline">Hablemos por WhatsApp</span>
             </p>
           </div>
         </div>

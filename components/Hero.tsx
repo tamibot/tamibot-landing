@@ -60,7 +60,7 @@ const Hero: React.FC = () => {
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-10">
               <button
-                onClick={() => window.open('https://wa.me/51995547575?text=Hola%20quisiera%20mas%20informaci%C3%B3n%20de%20Tami%20Bot', '_blank')}
+                onClick={() => window.open('https://wa.me/51995547575?text=Hola%20quiero%20mas%20informacion%20de%20TamiBot', '_blank')}
                 className="group relative overflow-hidden text-white px-5 py-2.5 rounded-full font-bold text-base hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 whitespace-nowrap shadow-[0_4px_14px_rgba(20,184,166,0.25)]"
                 style={{ backgroundColor: 'var(--color-secondary)' }}
               >
@@ -70,7 +70,7 @@ const Hero: React.FC = () => {
               </button>
 
               <button
-                onClick={() => window.open('https://wa.me/51995547575?text=Hola%20quisiera%20mas%20informaci%C3%B3n%20de%20Tami%20Bot', '_blank')}
+                onClick={() => window.open('https://wa.me/51995547575?text=Hola%20quiero%20mas%20informacion%20de%20TamiBot', '_blank')}
                 className="group bg-white text-gray-800 border-2 border-gray-100 px-5 py-2.5 rounded-full font-bold text-base hover:bg-gray-50 hover:border-gray-200 transition-all duration-300 flex items-center justify-center gap-2 whitespace-nowrap"
               >
                 <div className="bg-purple-50 p-1 rounded-full group-hover:bg-purple-100 transition-colors">

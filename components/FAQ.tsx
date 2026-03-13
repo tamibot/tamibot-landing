@@ -86,7 +86,7 @@ const FAQ: React.FC = () => {
 
         <div className="mt-16 text-center">
           <p className="text-gray-500 mb-6 font-medium">¿Tienes una duda específica?</p>
-          <button className="bg-[#9333ea] text-white px-10 py-4 rounded-full font-bold text-lg shadow-xl shadow-purple-200 hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center gap-2 mx-auto">
+          <button onClick={() => window.open('https://wa.me/51995547575?text=Hola%20quiero%20mas%20informacion%20de%20TamiBot', '_blank')} className="bg-[#9333ea] text-white px-10 py-4 rounded-full font-bold text-lg shadow-xl shadow-purple-200 hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center gap-2 mx-auto">
             <span>Hablar con un Experto</span>
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
           </button>

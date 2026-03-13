@@ -15,13 +15,13 @@ const Footer: React.FC = () => {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button
-              onClick={() => window.open('https://wa.me/51995547575?text=Hola%20quisiera%20mas%20informaci%C3%B3n%20de%20Tami%20Bot', '_blank')}
+              onClick={() => window.open('https://wa.me/51995547575?text=Hola%20quiero%20mas%20informacion%20de%20TamiBot', '_blank')}
               className="bg-white text-purple-900 font-bold text-lg px-8 py-4 rounded-full shadow-xl hover:shadow-white/20 hover:-translate-y-1 transition-all flex items-center gap-2"
             >
               <Zap size={20} className="fill-purple-600 text-purple-600" /> Contratar a Tami <ArrowRight size={20} />
             </button>
             <button
-              onClick={() => window.open('https://wa.me/51995547575?text=Hola%20quisiera%20mas%20informaci%C3%B3n%20de%20Tami%20Bot', '_blank')}
+              onClick={() => window.open('https://wa.me/51995547575?text=Hola%20quiero%20mas%20informacion%20de%20TamiBot', '_blank')}
               className="border-2 border-white/20 hover:bg-white/10 text-white font-bold text-lg px-8 py-4 rounded-full transition-colors flex items-center gap-2"
             >
               💬 Hablar con Ventas

@@ -61,7 +61,7 @@ const Onboarding: React.FC = () => {
         </div>
 
         <div className="mt-12 text-center">
-          <button className="bg-purple-600 text-white px-6 py-3 rounded-full text-base font-bold shadow-xl shadow-purple-800/30 hover:shadow-purple-800/50 hover:-translate-y-1 transition-all flex items-center justify-center gap-2 mx-auto">
+          <button onClick={() => window.open('https://wa.me/51995547575?text=Hola%20quiero%20mas%20informacion%20de%20TamiBot', '_blank')} className="bg-purple-600 text-white px-6 py-3 rounded-full text-base font-bold shadow-xl shadow-purple-800/30 hover:shadow-purple-800/50 hover:-translate-y-1 transition-all flex items-center justify-center gap-2 mx-auto">
             Quiero mi Lanzamiento Express <ArrowRight size={18} className="inline ml-1" />
           </button>
         </div>

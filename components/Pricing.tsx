@@ -18,7 +18,7 @@ const Pricing: React.FC = () => {
             Implementamos tu asistente Inmobiliario con IA, lo conectamos a tus portales y te damos 2 semanas para que veas los resultados antes de pagar tu primera cuota.
           </p>
           
-          <button onClick={() => window.open('https://wa.me/51995547575?text=Hola%20quisiera%20solicitar%20mi%20Demo%20Gratuita%20de%2014%20d%C3%ADas', '_blank')} className="bg-purple-600 text-white px-10 py-5 rounded-full font-bold text-lg hover:bg-purple-700 transition-all shadow-xl hover:shadow-purple-500/30 flex items-center gap-3 mx-auto group">
+          <button onClick={() => window.open('https://wa.me/51995547575?text=Hola%20quiero%20mas%20informacion%20de%20TamiBot', '_blank')} className="bg-purple-600 text-white px-10 py-5 rounded-full font-bold text-lg hover:bg-purple-700 transition-all shadow-xl hover:shadow-purple-500/30 flex items-center gap-3 mx-auto group">
             <Rocket size={24} className="group-hover:-translate-y-1 transition-transform" />
             Solicitar Mi Demo Gratuita de 2 Semanas
             <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
@@ -54,7 +54,7 @@ const Pricing: React.FC = () => {
               <li className="flex items-start gap-3 text-gray-400"><X size={20} className="shrink-0 mt-0.5" /> <span className="flex-1 line-through">Soporte para Proyectos Nuevos</span></li>
             </ul>
 
-            <button onClick={() => window.open('https://wa.me/51995547575?text=Hola%20quiero%20el%20Plan%20Agente%20Inmobiliario', '_blank')} className="w-full py-4 rounded-full font-bold text-lg transition-all duration-300 bg-teal-50 text-teal-700 hover:bg-teal-100 mt-auto border border-teal-100">
+            <button onClick={() => window.open('https://wa.me/51995547575?text=Hola%20quiero%20mas%20informacion%20de%20TamiBot', '_blank')} className="w-full py-4 rounded-full font-bold text-lg transition-all duration-300 bg-teal-50 text-teal-700 hover:bg-teal-100 mt-auto border border-teal-100">
               Comenzar con Demo Gratis
             </button>
           </div>
@@ -89,7 +89,7 @@ const Pricing: React.FC = () => {
               <li className="flex items-start gap-3"><Check size={20} className="text-purple-600 shrink-0 mt-0.5" /> <span className="flex-1">Panel Supervisor Multiusuario</span></li>
             </ul>
 
-            <button onClick={() => window.open('https://wa.me/51995547575?text=Hola%20quiero%20el%20Plan%20Desarrollo%20y%20Escala', '_blank')} className="w-full py-4 rounded-full font-bold text-lg transition-all duration-300 bg-purple-600 text-white hover:bg-purple-700 shadow-lg hover:shadow-purple-500/30 mt-auto">
+            <button onClick={() => window.open('https://wa.me/51995547575?text=Hola%20quiero%20mas%20informacion%20de%20TamiBot', '_blank')} className="w-full py-4 rounded-full font-bold text-lg transition-all duration-300 bg-purple-600 text-white hover:bg-purple-700 shadow-lg hover:shadow-purple-500/30 mt-auto">
               Comenzar con Demo Gratis
             </button>
           </div>

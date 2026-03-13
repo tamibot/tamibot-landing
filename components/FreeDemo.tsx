@@ -23,7 +23,7 @@ const FreeDemo: React.FC = () => {
                         </p>
                         
                         <div className="flex flex-col sm:flex-row items-center gap-4 mb-8">
-                            <button onClick={() => window.open('https://wa.me/51995547575?text=Hola%20quiero%20solicitar%20mi%20Prueba%20Gratuita%20de%2014%20d%C3%ADas', '_blank')} className="w-full sm:w-auto bg-teal-500 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-teal-400 transition-all shadow-lg hover:shadow-teal-500/40 flex items-center justify-center gap-2 group">
+                            <button onClick={() => window.open('https://wa.me/51995547575?text=Hola%20quiero%20mas%20informacion%20de%20TamiBot', '_blank')} className="w-full sm:w-auto bg-teal-500 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-teal-400 transition-all shadow-lg hover:shadow-teal-500/40 flex items-center justify-center gap-2 group">
                                 <Rocket size={20} className="group-hover:-translate-y-1 transition-transform" />
                                 Reclamar mis 14 Días
                             </button>
