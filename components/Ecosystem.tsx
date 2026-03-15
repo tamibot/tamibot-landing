@@ -35,7 +35,7 @@ const Ecosystem: React.FC = () => {
             const rect = containerRef.current.getBoundingClientRect();
             const viewHeight = window.innerHeight;
 
-            const scrollDistance = -rect.top + 100; // Offset
+            const scrollDistance = -rect.top + viewHeight * 0.35; // Offset — anchor higher so mockup is fully visible
             const totalScrollable = containerRef.current.offsetHeight - viewHeight;
             const progress = Math.max(0, Math.min(1, scrollDistance / totalScrollable));
 
@@ -69,16 +69,15 @@ const Ecosystem: React.FC = () => {
             ref={containerRef}
             className="relative h-auto md:h-[300vh] bg-white pt-24 md:pt-16 pb-32 md:pb-12"
         >
-            <div className="sticky top-20 h-auto md:min-h-[110vh] w-full flex flex-col items-center justify-center overflow-hidden pt-28 pb-32 md:pt-32 md:pb-24 px-4 md:px-6">
+            <div className="sticky top-8 h-auto md:min-h-[100vh] w-full flex flex-col items-center justify-start overflow-hidden pt-16 pb-32 md:pt-20 md:pb-24 px-4 md:px-6">
 
                 {/* Header Section */}
                 <div className="max-w-4xl w-full text-center mb-6 md:mb-10">
                     <h2 className="text-3xl md:text-5xl font-black text-gray-900 tracking-tight leading-tight">
-                        Potencia tu Negocio con <span className="text-purple-600">Nuestro Ecosistema CRM.</span>
+                        Automatiza tu CRM con <span className="text-purple-600">Inteligencia Artificial.</span>
                     </h2>
                     <p className="text-base md:text-lg text-gray-500 max-w-2xl mx-auto mt-4 leading-relaxed">
-                        Toma el control absoluto de tus ventas. Centraliza comunicaciones, audita a tu equipo y 
-                        escala con decisiones basadas en datos reales.
+                        Conecta un agente de IA a tu WhatsApp que califica leads, agenda visitas y gestiona tu pipeline de ventas sin intervención humana. Tú supervisas, la IA ejecuta.
                     </p>
                 </div>
 

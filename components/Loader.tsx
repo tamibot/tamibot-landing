@@ -4,27 +4,62 @@ import React from 'react';
 const Loader: React.FC = () => {
   return (
     <div className="fixed inset-0 z-[100] bg-[#F9FAFB] flex flex-col items-center justify-center transition-opacity duration-700">
-      {/* iOS Emoji Style Stack: Red (Bottom), Green (Middle), Blue (Top) */}
-      <div className="relative w-32 h-32 mb-6 flex items-end justify-center perspective-500">
+      {/* Building Construction Animation */}
+      <div className="relative w-36 h-40 mb-6 flex items-end justify-center">
 
-        {/* Book 1 (Bottom - Dark Purple) */}
-        <div className="absolute bottom-0 w-24 h-7 bg-[#7e22ce] rounded-r-sm rounded-l-lg shadow-[0_1px_2px_rgba(0,0,0,0.1),_inset_4px_0_8px_rgba(0,0,0,0.1)] animate-stack-1 z-10 origin-bottom flex items-center overflow-hidden">
-          {/* Spine Highlight */}
-          <div className="absolute left-0 top-0 bottom-0 w-2 bg-white/10"></div>
-          {/* Pages visual */}
-          <div className="absolute top-[3px] bottom-[3px] right-0 w-[82%] bg-[#FDFDFD] rounded-r-sm border-l border-gray-200 shadow-inner"></div>
+        {/* Ground / Base */}
+        <div className="absolute bottom-0 w-full h-1 bg-gray-200 rounded-full"></div>
+
+        {/* Building Frame */}
+        <div className="absolute bottom-1 left-1/2 -translate-x-1/2 flex flex-col items-center">
+
+          {/* Floor 3 (Top - animates in last) */}
+          <div className="animate-build-3 w-20 h-8 bg-gradient-to-r from-[#14b8a6] to-[#0d9488] rounded-t-lg mb-0.5 relative overflow-hidden opacity-0">
+            <div className="absolute inset-x-0 top-0 h-1 bg-white/20"></div>
+            <div className="flex justify-center gap-2 mt-2">
+              <div className="w-3 h-3 bg-white/30 rounded-sm"></div>
+              <div className="w-3 h-3 bg-white/30 rounded-sm"></div>
+              <div className="w-3 h-3 bg-white/30 rounded-sm"></div>
+            </div>
+            {/* Antenna */}
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-0.5 h-3 bg-[#14b8a6]"></div>
+            <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-[#14b8a6] rounded-full animate-pulse"></div>
+          </div>
+
+          {/* Floor 2 (Middle - animates second) */}
+          <div className="animate-build-2 w-24 h-10 bg-gradient-to-r from-[#9333ea] to-[#7e22ce] mb-0.5 relative overflow-hidden opacity-0">
+            <div className="absolute inset-x-0 top-0 h-0.5 bg-white/15"></div>
+            <div className="flex justify-center gap-2 mt-2.5">
+              <div className="w-3.5 h-4 bg-white/25 rounded-sm"></div>
+              <div className="w-3.5 h-4 bg-purple-300/40 rounded-sm"></div>
+              <div className="w-3.5 h-4 bg-white/25 rounded-sm"></div>
+            </div>
+          </div>
+
+          {/* Floor 1 (Base - animates first) */}
+          <div className="animate-build-1 w-28 h-12 bg-gradient-to-r from-[#7e22ce] to-[#6b21a8] relative overflow-hidden opacity-0">
+            <div className="absolute inset-x-0 top-0 h-0.5 bg-white/15"></div>
+            <div className="flex justify-center gap-2.5 mt-3">
+              <div className="w-4 h-5 bg-white/20 rounded-sm"></div>
+              <div className="w-6 h-6 bg-[#14b8a6]/40 rounded-t-md border-t-2 border-x-2 border-[#14b8a6]/50 mt-1"></div>
+              <div className="w-4 h-5 bg-white/20 rounded-sm"></div>
+            </div>
+          </div>
         </div>
 
-        {/* Book 2 (Middle - Purple) */}
-        <div className="absolute bottom-7 w-24 h-7 bg-[#9333ea] rounded-r-sm rounded-l-lg shadow-[0_1px_2px_rgba(0,0,0,0.1),_inset_4px_0_8px_rgba(0,0,0,0.1)] animate-stack-2 z-20 origin-bottom flex items-center overflow-hidden">
-          <div className="absolute left-0 top-0 bottom-0 w-2 bg-white/10"></div>
-          <div className="absolute top-[3px] bottom-[3px] right-0 w-[82%] bg-[#FDFDFD] rounded-r-sm border-l border-gray-200 shadow-inner"></div>
+        {/* Crane arm (decorative) */}
+        <div className="absolute top-2 right-4 animate-crane opacity-60">
+          <div className="w-0.5 h-16 bg-gray-300 absolute bottom-0 right-0"></div>
+          <div className="w-12 h-0.5 bg-gray-300 absolute top-0 right-0"></div>
+          <div className="w-0.5 h-4 bg-gray-400 absolute top-0 right-0"></div>
+          <div className="w-1 h-1 bg-[#14b8a6] rounded-full absolute top-4 right-0 animate-pulse"></div>
         </div>
 
-        {/* Book 3 (Top - Teal) */}
-        <div className="absolute bottom-14 w-24 h-7 bg-[#14b8a6] rounded-r-sm rounded-l-lg shadow-[0_4px_12px_rgba(0,0,0,0.15),_inset_4px_0_8px_rgba(0,0,0,0.1)] animate-stack-3 z-30 origin-bottom flex items-center overflow-hidden">
-          <div className="absolute left-0 top-0 bottom-0 w-2 bg-white/10"></div>
-          <div className="absolute top-[3px] bottom-[3px] right-0 w-[82%] bg-[#FDFDFD] rounded-r-sm border-l border-gray-200 shadow-inner"></div>
+        {/* "SOLD" floating badge */}
+        <div className="absolute -top-1 -left-1 animate-float-badge opacity-0">
+          <div className="bg-[#14b8a6] text-white text-[7px] font-black px-2 py-1 rounded-md shadow-lg uppercase tracking-wider">
+            Vendido
+          </div>
         </div>
 
       </div>
@@ -35,30 +70,35 @@ const Loader: React.FC = () => {
       </div>
 
       <style>{`
-        @keyframes stack-1 {
-          0% { transform: translateY(0) scale(1); }
-          50% { transform: translateY(2px) scale(0.98); }
-          100% { transform: translateY(0) scale(1); }
+        @keyframes build-1 {
+          0% { transform: translateY(20px) scaleY(0); opacity: 0; }
+          30% { transform: translateY(0) scaleY(1); opacity: 1; }
+          100% { transform: translateY(0) scaleY(1); opacity: 1; }
         }
-        @keyframes stack-2 {
-          0% { transform: translateY(-40px) rotate(-5deg); opacity: 0; }
-          20% { transform: translateY(0) rotate(0); opacity: 1; }
-          25% { transform: translateY(2px) rotate(0); }
-          30% { transform: translateY(0) rotate(0); }
-          100% { transform: translateY(0) rotate(0); opacity: 1; }
+        @keyframes build-2 {
+          0%, 25% { transform: translateY(15px) scaleY(0); opacity: 0; }
+          55% { transform: translateY(0) scaleY(1); opacity: 1; }
+          100% { transform: translateY(0) scaleY(1); opacity: 1; }
         }
-        @keyframes stack-3 {
-          0% { opacity: 0; }
-          15% { opacity: 0; transform: translateY(-40px) rotate(5deg); }
-          35% { transform: translateY(0) rotate(0); opacity: 1; }
-          40% { transform: translateY(2px) rotate(0); }
-          45% { transform: translateY(0) rotate(0); }
-          100% { transform: translateY(0) rotate(0); opacity: 1; }
+        @keyframes build-3 {
+          0%, 50% { transform: translateY(10px) scaleY(0); opacity: 0; }
+          80% { transform: translateY(0) scaleY(1); opacity: 1; }
+          100% { transform: translateY(0) scaleY(1); opacity: 1; }
         }
-        .animate-stack-1 { animation: stack-1 2s infinite ease-in-out; }
-        .animate-stack-2 { animation: stack-2 2s infinite cubic-bezier(0.25, 1, 0.5, 1); }
-        .animate-stack-3 { animation: stack-3 2s infinite cubic-bezier(0.25, 1, 0.5, 1); }
-        .perspective-500 { perspective: 500px; }
+        @keyframes crane-swing {
+          0%, 100% { transform: rotate(-2deg); }
+          50% { transform: rotate(2deg); }
+        }
+        @keyframes float-badge {
+          0%, 70% { opacity: 0; transform: translateY(5px) scale(0.8); }
+          85% { opacity: 1; transform: translateY(0) scale(1.05); }
+          100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .animate-build-1 { animation: build-1 2.5s ease-out infinite; transform-origin: bottom; }
+        .animate-build-2 { animation: build-2 2.5s ease-out infinite; transform-origin: bottom; }
+        .animate-build-3 { animation: build-3 2.5s ease-out infinite; transform-origin: bottom; }
+        .animate-crane { animation: crane-swing 3s ease-in-out infinite; transform-origin: bottom right; }
+        .animate-float-badge { animation: float-badge 2.5s ease-out infinite; }
       `}</style>
     </div>
   );
